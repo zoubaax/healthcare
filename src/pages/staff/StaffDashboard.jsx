@@ -2,6 +2,7 @@ import { useState, useEffect } from 'react'
 import { useNavigate } from 'react-router-dom'
 import { useAuth } from '../../contexts/AuthContext'
 import { supabase } from '../../lib/supabase'
+import ThemeToggle from '../../components/ThemeToggle'
 import DoctorManagement from '../../components/staff/DoctorManagement'
 import TimeSlotManagement from '../../components/staff/TimeSlotManagement'
 import AppointmentManagement from '../../components/staff/AppointmentManagement'
@@ -100,7 +101,7 @@ export default function StaffDashboard() {
   }
 
   return (
-    <div className="min-h-screen bg-gray-50">
+    <div className="min-h-screen bg-gray-50 dark:bg-[#0f172a] transition-colors duration-300">
       {/* Sidebar */}
       <aside className={`fixed inset-y-0 left-0 z-50 w-64 bg-gradient-to-b from-[#1a5858] to-[#0d3d3d] transform transition-all duration-300 ease-in-out lg:translate-x-0 ${sidebarOpen ? 'translate-x-0 shadow-2xl' : '-translate-x-full'}`}>
         <div className="flex flex-col h-full">
@@ -186,7 +187,7 @@ export default function StaffDashboard() {
       {/* Main Content */}
       <main className={`min-h-screen transition-all duration-300 ${sidebarOpen ? 'lg:ml-64' : ''}`}>
         {/* Top Header */}
-        <header className="sticky top-0 z-40 bg-white border-b border-gray-200 shadow-sm">
+        <header className="sticky top-0 z-40 bg-white dark:bg-[#1e293b] border-b border-gray-200 dark:border-gray-700 shadow-sm transition-colors duration-300">
           <div className="flex items-center justify-between px-6 py-4">
             <div className="flex items-center gap-4">
               <button
@@ -208,6 +209,8 @@ export default function StaffDashboard() {
 
             {/* Header Actions */}
             <div className="flex items-center gap-3">
+              {/* Theme Toggle */}
+              <ThemeToggle />
               {/* Pending Badge */}
               {stats.pendingCount > 0 && (
                 <div className="hidden md:flex items-center gap-2 px-3 py-1.5 bg-amber-50 border border-amber-200 rounded-lg">
@@ -332,7 +335,7 @@ export default function StaffDashboard() {
         </div>
 
         {/* Footer */}
-        <footer className="px-6 py-4 border-t border-gray-200 bg-white mt-8">
+        <footer className="px-6 py-4 border-t border-gray-200 dark:border-gray-700 bg-white dark:bg-[#1e293b] mt-8 transition-colors duration-300">
           <div className="flex flex-col md:flex-row justify-between items-center text-sm text-gray-500">
             <div className="flex items-center gap-2">
               <Building className="w-4 h-4" />

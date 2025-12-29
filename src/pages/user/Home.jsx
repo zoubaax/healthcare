@@ -67,16 +67,17 @@ export default function Home() {
               <div className="w-10 h-10 rounded-xl bg-gradient-to-br from-[#b0e7e7] to-[#8adcdc] flex items-center justify-center shadow-md">
                 <Heart className="w-6 h-6 text-[#1a5858]" />
               </div>
-              <span className="font-bold text-xl text-gray-900 dark:text-white">HealthCare Pro</span>
+              <span className="font-bold text-xl text-gray-900 dark:text-white transition-colors duration-300">HealthCare Pro</span>
             </div>
-            <div className="flex items-center gap-4">
+            <div className="flex items-center gap-3">
               <ThemeToggle />
               <Link
                 to="/login"
-                className="flex items-center gap-2 px-4 py-2 bg-gradient-to-r from-[#b0e7e7] to-[#8adcdc] text-[#1a5858] font-semibold rounded-lg hover:opacity-90 transition-opacity text-sm"
+                className="flex items-center gap-2 px-4 py-2 bg-gradient-to-r from-[#b0e7e7] to-[#8adcdc] text-[#1a5858] font-semibold rounded-lg hover:opacity-90 transition-opacity text-sm shadow-sm"
               >
                 <User className="w-4 h-4" />
-                <span>Staff Login</span>
+                <span className="hidden sm:inline">Staff Login</span>
+                <span className="sm:hidden">Login</span>
               </Link>
             </div>
           </div>
