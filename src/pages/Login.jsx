@@ -2,6 +2,8 @@ import { useState, useEffect } from 'react'
 import { useNavigate, Link } from 'react-router-dom'
 import { useAuth } from '../contexts/AuthContext'
 import ThemeToggle from '../components/ThemeToggle'
+import logo_white from '../assets/logo-white.png'
+import logo_dark from '../assets/logo-dark.png'
 import {
   Shield,
   Lock,
@@ -21,8 +23,10 @@ import {
   Calendar,
   Stethoscope
 } from 'lucide-react'
+import { useTheme } from '../contexts/ThemeContext'
 
 export default function Login() {
+  const { isDark } = useTheme()
   const [email, setEmail] = useState('')
   const [password, setPassword] = useState('')
   const [showPassword, setShowPassword] = useState(false)
@@ -66,13 +70,22 @@ export default function Login() {
           <div>
             <div className="flex items-center justify-between mb-6">
               <div className="flex items-center gap-3">
-                <div className="w-12 h-12 rounded-xl bg-gradient-to-br from-[#b0e7e7] to-[#8adcdc] flex items-center justify-center shadow-lg">
-                  <Heart className="w-6 h-6 text-[#1a5858]" />
-                </div>
-                <div>
-                  <h1 className="text-xl font-bold text-white">HealthCare Pro</h1>
-                  <p className="text-xs text-white/60">Professional Healthcare Platform</p>
-                </div>
+                <Link to="/" className="w-40 h-40 flex items-center justify-center hover:opacity-90 transition-opacity">
+                  {/* Show different icon based on theme */}
+                  {isDark ? (
+                    <img
+                      src={logo_dark}
+                      alt="HealthCare Pro Logo"
+                      className="w-40 h-40 object-contain"
+                    />
+                  ) : (
+                    <img
+                      src={logo_white}
+                      alt="HealthCare Pro Logo"
+                      className="w-40 h-40 object-contain"
+                    />
+                  )}
+                </Link>
               </div>
               <ThemeToggle />
             </div>
@@ -139,11 +152,22 @@ export default function Login() {
             <div className="absolute top-0 right-0">
               <ThemeToggle />
             </div>
-            <div className="w-16 h-16 rounded-xl bg-gradient-to-br from-[#b0e7e7] to-[#8adcdc] flex items-center justify-center shadow-lg mb-3">
-              <Heart className="w-8 h-8 text-[#1a5858]" />
-            </div>
-            <h1 className="text-xl font-bold text-gray-900">HealthCare Pro</h1>
-            <p className="text-gray-600 text-sm">Staff & Admin Portal</p>
+            <Link to="/" className="w-40 h-40 flex items-center justify-center hover:opacity-90 transition-opacity mb-3">
+              {/* Show different icon based on theme */}
+              {isDark ? (
+                <img
+                  src={logo_dark}
+                  alt="HealthCare Pro Logo"
+                  className="w-40 h-40 object-contain"
+                />
+              ) : (
+                <img
+                  src={logo_white}
+                  alt="HealthCare Pro Logo"
+                  className="w-40 h-40 object-contain"
+                />
+              )}
+            </Link>
           </div>
 
           {/* Form Header */}

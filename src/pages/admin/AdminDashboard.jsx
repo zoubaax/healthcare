@@ -19,8 +19,13 @@ import {
   UserCircle,
   ShieldCheck
 } from 'lucide-react'
+import logo_white from '../../assets/logo-white.png'
+import logo_dark from '../../assets/logo-dark.png'
+import { useTheme } from '../../contexts/ThemeContext'
+import { Link } from 'react-router-dom'
 
 export default function AdminDashboard() {
+  const { isDark } = useTheme()
   const { user, signOut } = useAuth()
   const navigate = useNavigate()
   const [activeTab, setActiveTab] = useState('overview')
@@ -44,25 +49,38 @@ export default function AdminDashboard() {
 
   return (
     <div className="min-h-screen bg-gray-50 dark:bg-[#0f172a] transition-colors duration-300">
-      {/* Sidebar */}
-      <aside className={`fixed inset-y-0 left-0 z-50 w-64 bg-gradient-to-b from-[#1a5858] to-[#0d3d3d] transform transition-all duration-300 ease-in-out lg:translate-x-0 ${sidebarOpen ? 'translate-x-0 shadow-2xl' : '-translate-x-full'}`}>
+      {/* Sidebar - Modern Clean Style */}
+      <aside className={`fixed inset-y-0 left-0 z-50 w-64 bg-white dark:bg-[#0f172a] border-r border-gray-200 dark:border-gray-800 transform transition-all duration-300 ease-in-out lg:translate-x-0 ${sidebarOpen ? 'translate-x-0 shadow-2xl' : '-translate-x-full'}`}>
         <div className="flex flex-col h-full">
           {/* Logo Section */}
-          <div className="p-6 border-b border-white/10">
+          <div className="p-6 border-b border-gray-100 dark:border-gray-800">
             <div className="flex items-center gap-3">
-              <div className="w-12 h-12 rounded-xl bg-gradient-to-br from-[#b0e7e7] to-[#8adcdc] flex items-center justify-center shadow-lg">
-                <Building className="w-6 h-6 text-[#1a5858]" />
-              </div>
+              <Link to="/" className="w-10 h-10 flex items-center justify-center hover:opacity-90 transition-opacity">
+                {/* Show different icon based on theme */}
+                {isDark ? (
+                  <img
+                    src={logo_dark}
+                    alt="HealthCare Pro Logo"
+                    className="w-10 h-10 object-contain"
+                  />
+                ) : (
+                  <img
+                    src={logo_white}
+                    alt="HealthCare Pro Logo"
+                    className="w-10 h-10 object-contain"
+                  />
+                )}
+              </Link>
               <div>
-                <h1 className="font-bold text-white text-lg tracking-tight">HealthCare Pro</h1>
-                <p className="text-xs text-white/60 font-medium">Admin Control Panel</p>
+                <h1 className="font-bold text-gray-900 dark:text-white text-lg tracking-tight">HealthCare Pro</h1>
+                <p className="text-xs text-gray-500 dark:text-gray-400 font-medium">Admin Control Panel</p>
               </div>
             </div>
           </div>
 
           {/* Navigation */}
           <nav className="flex-1 py-6 overflow-y-auto">
-            <p className="px-6 text-xs font-semibold text-white/40 uppercase tracking-wider mb-4">
+            <p className="px-6 text-xs font-semibold text-gray-400 dark:text-gray-500 uppercase tracking-wider mb-4">
               Administration
             </p>
             <div className="space-y-1 px-3">
@@ -70,26 +88,26 @@ export default function AdminDashboard() {
                 <button
                   key={item.id}
                   onClick={() => setActiveTab(item.id)}
-                  className={`w-full flex items-center gap-3 px-4 py-3 rounded-xl transition-all duration-200 ${activeTab === item.id
-                    ? 'bg-white/10 text-white shadow-lg shadow-black/10'
-                    : 'text-white/70 hover:text-white hover:bg-white/5'
+                  className={`w-full flex items-center gap-3 px-4 py-3 rounded-xl transition-all duration-200 group ${activeTab === item.id
+                    ? 'bg-blue-50 dark:bg-blue-900/20 text-blue-600 dark:text-blue-400 font-semibold'
+                    : 'text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-gray-200 hover:bg-gray-50 dark:hover:bg-gray-800/50'
                     }`}
                 >
-                  <div className={`p-2 rounded-lg ${activeTab === item.id ? 'bg-white/20' : 'bg-white/10'}`}>
+                  <div className={`p-2 rounded-lg transition-colors ${activeTab === item.id ? 'bg-blue-100 dark:bg-blue-800/30' : 'bg-gray-100 dark:bg-gray-800 group-hover:bg-gray-200 dark:group-hover:bg-gray-700'}`}>
                     {item.icon}
                   </div>
-                  <span className="font-medium flex-1 text-left">{item.label}</span>
-                  <ChevronRight className={`w-4 h-4 transition-transform duration-200 ${activeTab === item.id ? 'rotate-90' : ''}`} />
+                  <span className="flex-1 text-left">{item.label}</span>
+                  {activeTab === item.id && <ChevronRight className="w-4 h-4 text-blue-500" />}
                 </button>
               ))}
             </div>
           </nav>
 
-          {/* Bottom Actions - Only Sign Out */}
-          <div className="p-4 border-t border-white/10">
+          {/* Bottom Actions */}
+          <div className="p-4 border-t border-gray-100 dark:border-gray-800">
             <button
               onClick={handleSignOut}
-              className="w-full flex items-center justify-center gap-3 px-4 py-3 text-white/70 hover:text-white hover:bg-white/5 rounded-xl transition-all duration-200 group"
+              className="w-full flex items-center justify-center gap-3 px-4 py-3 text-gray-600 dark:text-gray-400 hover:text-red-600 dark:hover:text-red-400 hover:bg-red-50 dark:hover:bg-red-900/10 rounded-xl transition-all duration-200 group"
             >
               <LogOut className="w-5 h-5 transition-transform group-hover:-translate-x-1" />
               <span className="font-medium">Sign Out</span>

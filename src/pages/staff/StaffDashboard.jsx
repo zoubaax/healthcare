@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react'
-import { useNavigate } from 'react-router-dom'
+import { useNavigate, Link } from 'react-router-dom'
 import { useAuth } from '../../contexts/AuthContext'
 import { supabase } from '../../lib/supabase'
 import ThemeToggle from '../../components/ThemeToggle'
@@ -25,8 +25,12 @@ import {
   Clock,
   ExternalLink
 } from 'lucide-react'
+import logo_white from '../../assets/logo-white.png'
+import logo_dark from '../../assets/logo-dark.png'
+import { useTheme } from '../../contexts/ThemeContext'
 
 export default function StaffDashboard() {
+  const { isDark } = useTheme()
   const { user, signOut } = useAuth()
   const navigate = useNavigate()
   const [activeTab, setActiveTab] = useState('doctors')
@@ -103,24 +107,38 @@ export default function StaffDashboard() {
   return (
     <div className="min-h-screen bg-gray-50 dark:bg-[#0f172a] transition-colors duration-300">
       {/* Sidebar */}
-      <aside className={`fixed inset-y-0 left-0 z-50 w-64 bg-gradient-to-b from-[#1a5858] to-[#0d3d3d] transform transition-all duration-300 ease-in-out lg:translate-x-0 ${sidebarOpen ? 'translate-x-0 shadow-2xl' : '-translate-x-full'}`}>
+      {/* Sidebar - Modern Clean Style */}
+      <aside className={`fixed inset-y-0 left-0 z-50 w-64 bg-white dark:bg-[#0f172a] border-r border-gray-200 dark:border-gray-800 transform transition-all duration-300 ease-in-out lg:translate-x-0 ${sidebarOpen ? 'translate-x-0 shadow-2xl' : '-translate-x-full'}`}>
         <div className="flex flex-col h-full">
           {/* Logo Section */}
-          <div className="p-6 border-b border-white/10">
+          <div className="p-6 border-b border-gray-100 dark:border-gray-800">
             <div className="flex items-center gap-3">
-              <div className="w-12 h-12 rounded-xl bg-gradient-to-br from-[#b0e7e7] to-[#8adcdc] flex items-center justify-center shadow-lg">
-                <Building className="w-6 h-6 text-[#1a5858]" />
-              </div>
+              <Link to="/" className="w-10 h-10 flex items-center justify-center hover:opacity-90 transition-opacity">
+                {/* Show different icon based on theme */}
+                {isDark ? (
+                  <img
+                    src={logo_dark}
+                    alt="HealthCare Pro Logo"
+                    className="w-10 h-10 object-contain"
+                  />
+                ) : (
+                  <img
+                    src={logo_white}
+                    alt="HealthCare Pro Logo"
+                    className="w-10 h-10 object-contain"
+                  />
+                )}
+              </Link>
               <div>
-                <h1 className="font-bold text-white text-lg tracking-tight">HealthCare Pro</h1>
-                <p className="text-xs text-white/60 font-medium">Staff Dashboard</p>
+                <h1 className="font-bold text-gray-900 dark:text-white text-lg tracking-tight">HealthCare Pro</h1>
+                <p className="text-xs text-gray-500 dark:text-gray-400 font-medium">Staff Dashboard</p>
               </div>
             </div>
           </div>
 
           {/* Navigation */}
           <nav className="flex-1 py-6 overflow-y-auto">
-            <p className="px-6 text-xs font-semibold text-white/40 uppercase tracking-wider mb-4">
+            <p className="px-6 text-xs font-semibold text-gray-400 dark:text-gray-500 uppercase tracking-wider mb-4">
               Management
             </p>
             <div className="space-y-1 px-3">
@@ -128,37 +146,46 @@ export default function StaffDashboard() {
                 <button
                   key={item.id}
                   onClick={() => setActiveTab(item.id)}
-                  className={`w-full flex items-center gap-3 px-4 py-3 rounded-xl transition-all duration-200 ${activeTab === item.id
-                    ? 'bg-white/10 text-white shadow-lg shadow-black/10'
-                    : 'text-white/70 hover:text-white hover:bg-white/5'
+                  className={`w-full flex items-center gap-3 px-4 py-3 rounded-xl transition-all duration-200 group ${activeTab === item.id
+                    ? 'bg-blue-50 dark:bg-blue-900/20 text-blue-600 dark:text-blue-400 font-semibold'
+                    : 'text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-gray-200 hover:bg-gray-50 dark:hover:bg-gray-800/50'
                     }`}
                 >
-                  <div className={`p-2 rounded-lg ${activeTab === item.id ? 'bg-white/20' : 'bg-white/10'}`}>
+                  <div className={`p-2 rounded-lg transition-colors ${activeTab === item.id
+                    ? 'bg-blue-100 dark:bg-blue-800/30'
+                    : 'bg-gray-100 dark:bg-gray-800 group-hover:bg-gray-200 dark:group-hover:bg-gray-700'}`}>
                     {item.icon}
                   </div>
                   <div className="flex-1 text-left">
                     <div className="flex items-center justify-between">
                       <span className="font-medium">{item.label}</span>
                       {item.badge > 0 && (
-                        <span className={`px-2 py-0.5 text-xs rounded-full font-medium ${item.badgeColor || 'bg-[#b0e7e7]'} text-white`}>
+                        <span className={`px-2 py-0.5 text-xs rounded-full font-medium ${activeTab === item.id
+                          ? 'bg-blue-500 text-white'
+                          : 'bg-gray-100 dark:bg-gray-800 text-gray-600 dark:text-gray-400'
+                          }`}>
                           {item.badge}
                         </span>
                       )}
                     </div>
-                    <p className="text-xs text-white/50 mt-0.5">{item.description}</p>
+                    {item.description && (
+                      <p className={`text-xs mt-0.5 ${activeTab === item.id ? 'text-blue-500/80 dark:text-blue-400/80' : 'text-gray-400'}`}>
+                        {item.description}
+                      </p>
+                    )}
                   </div>
-                  <ChevronRight className={`w-4 h-4 transition-transform duration-200 ${activeTab === item.id ? 'rotate-90' : ''}`} />
+                  {activeTab === item.id && <ChevronRight className="w-4 h-4 text-blue-500" />}
                 </button>
               ))}
             </div>
           </nav>
 
-          {/* Bottom Actions - Cleaned up */}
-          <div className="p-4 border-t border-white/10 space-y-3">
+          {/* Bottom Actions */}
+          <div className="p-4 border-t border-gray-100 dark:border-gray-800 space-y-3">
             {/* Public Site Button */}
             <button
               onClick={() => navigate('/')}
-              className="w-full flex items-center justify-center gap-2 px-3 py-3 bg-gradient-to-r from-[#b0e7e7] to-[#8adcdc] text-[#1a5858] rounded-lg text-sm font-semibold hover:opacity-90 transition-opacity"
+              className="w-full flex items-center justify-center gap-2 px-3 py-3 bg-gray-50 dark:bg-gray-800/50 text-gray-700 dark:text-gray-300 rounded-xl text-sm font-semibold hover:bg-gray-100 dark:hover:bg-gray-800 transition-colors"
             >
               <Home className="w-4 h-4" />
               <span>View Public Site</span>
@@ -167,7 +194,7 @@ export default function StaffDashboard() {
             {/* Sign Out */}
             <button
               onClick={handleSignOut}
-              className="w-full flex items-center justify-center gap-3 px-4 py-3 text-white/70 hover:text-white hover:bg-white/5 rounded-xl transition-all duration-200 group"
+              className="w-full flex items-center justify-center gap-3 px-4 py-3 text-gray-600 dark:text-gray-400 hover:text-red-600 dark:hover:text-red-400 hover:bg-red-50 dark:hover:bg-red-900/10 rounded-xl transition-all duration-200 group"
             >
               <LogOut className="w-5 h-5 transition-transform group-hover:-translate-x-1" />
               <span className="font-medium">Sign Out</span>
@@ -290,36 +317,36 @@ export default function StaffDashboard() {
           {/* Quick Stats Bar */}
           <div className="px-6 pb-4">
             <div className="grid grid-cols-1 md:grid-cols-3 gap-3">
-              <div className="bg-gradient-to-r from-gray-50 to-white p-4 rounded-xl border border-gray-200 hover:border-[#b0e7e7] transition-colors">
+              <div className="bg-gradient-to-r from-gray-50 to-white dark:from-[#334155] dark:to-[#1e293b] p-4 rounded-xl border border-gray-200 dark:border-gray-700 card-enhanced transition-all duration-300">
                 <div className="flex items-center justify-between">
                   <div>
-                    <p className="text-sm text-gray-600 font-medium">Pending Appointments</p>
-                    <p className="text-2xl font-bold text-amber-600 mt-1">{stats.pendingCount}</p>
+                    <p className="text-sm text-gray-600 dark:text-gray-300 font-medium">Pending Appointments</p>
+                    <p className="text-2xl font-bold text-amber-600 dark:text-amber-400 mt-1">{stats.pendingCount}</p>
                   </div>
-                  <div className="p-3 bg-amber-50 rounded-lg">
-                    <AlertCircle className="w-6 h-6 text-amber-600" />
+                  <div className="p-3 bg-amber-50 dark:bg-amber-900/20 rounded-lg">
+                    <AlertCircle className="w-6 h-6 text-amber-600 dark:text-amber-400" />
                   </div>
                 </div>
               </div>
-              <div className="bg-gradient-to-r from-gray-50 to-white p-4 rounded-xl border border-gray-200 hover:border-[#b0e7e7] transition-colors">
+              <div className="bg-gradient-to-r from-gray-50 to-white dark:from-[#334155] dark:to-[#1e293b] p-4 rounded-xl border border-gray-200 dark:border-gray-700 card-enhanced transition-all duration-300">
                 <div className="flex items-center justify-between">
                   <div>
-                    <p className="text-sm text-gray-600 font-medium">Confirmed Today</p>
-                    <p className="text-2xl font-bold text-emerald-600 mt-1">{stats.confirmedToday}</p>
+                    <p className="text-sm text-gray-600 dark:text-gray-300 font-medium">Confirmed Today</p>
+                    <p className="text-2xl font-bold text-emerald-600 dark:text-emerald-400 mt-1">{stats.confirmedToday}</p>
                   </div>
-                  <div className="p-3 bg-emerald-50 rounded-lg">
-                    <Clock className="w-6 h-6 text-emerald-600" />
+                  <div className="p-3 bg-emerald-50 dark:bg-emerald-900/20 rounded-lg">
+                    <Clock className="w-6 h-6 text-emerald-600 dark:text-emerald-400" />
                   </div>
                 </div>
               </div>
-              <div className="bg-gradient-to-r from-gray-50 to-white p-4 rounded-xl border border-gray-200 hover:border-[#b0e7e7] transition-colors">
+              <div className="bg-gradient-to-r from-gray-50 to-white dark:from-[#334155] dark:to-[#1e293b] p-4 rounded-xl border border-gray-200 dark:border-gray-700 card-enhanced transition-all duration-300">
                 <div className="flex items-center justify-between">
                   <div>
-                    <p className="text-sm text-gray-600 font-medium">Total Doctors</p>
-                    <p className="text-2xl font-bold text-blue-600 mt-1">{stats.totalDoctors}</p>
+                    <p className="text-sm text-gray-600 dark:text-gray-300 font-medium">Total Doctors</p>
+                    <p className="text-2xl font-bold text-blue-600 dark:text-blue-400 mt-1">{stats.totalDoctors}</p>
                   </div>
-                  <div className="p-3 bg-blue-50 rounded-lg">
-                    <Users className="w-6 h-6 text-blue-600" />
+                  <div className="p-3 bg-blue-50 dark:bg-blue-900/20 rounded-lg">
+                    <Users className="w-6 h-6 text-blue-600 dark:text-blue-400" />
                   </div>
                 </div>
               </div>

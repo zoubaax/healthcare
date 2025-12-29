@@ -1,6 +1,9 @@
-/* Additional Dark Mode Utilities for Tailwind Classes */
+/* Enhanced Dark Mode Utilities for Better UI/UX */
 
-/* Override hardcoded white backgrounds in dark mode */
+/* ====================
+   Background Overrides
+   ==================== */
+
 .dark .bg-white {
     background-color: var(--bg-primary) !important;
 }
@@ -13,7 +16,23 @@
     background-color: var(--bg-tertiary) !important;
 }
 
-/* Text color overrides */
+.dark .bg-gray-200 {
+    background-color: #475569 !important;
+}
+
+/* Improved hover states */
+.dark .hover\:bg-gray-50:hover {
+    background-color: rgba(56, 68, 89, 0.5) !important;
+}
+
+.dark .hover\:bg-gray-100:hover {
+    background-color: rgba(71, 85, 105, 0.5) !important;
+}
+
+/* ====================
+   Text Color Overrides
+   ==================== */
+
 .dark .text-gray-900 {
     color: var(--text-primary) !important;
 }
@@ -31,10 +50,26 @@
 }
 
 .dark .text-gray-500 {
-    color: var(--text-tertiary) !important;
+    color: #94a3a3 !important;
 }
 
-/* Border overrides */
+.dark .text-gray-400 {
+    color: #9ca3af !important;
+}
+
+/* Improved hover states for text */
+.dark .hover\:text-gray-900:hover {
+    color: var(--text-primary) !important;
+}
+
+.dark .hover\:text-gray-600:hover {
+    color: var(--text-primary) !important;
+}
+
+/* ====================
+   Border Overrides
+   ==================== */
+
 .dark .border-gray-100 {
     border-color: var(--border-primary) !important;
 }
@@ -47,7 +82,14 @@
     border-color: var(--border-secondary) !important;
 }
 
-/* Gradient backgrounds - adjust for dark mode */
+.dark .hover\:border-\[#b0e7e7\]:hover {
+    border-color: #8adcdc !important;
+}
+
+/* ====================
+   Gradient Overrides
+   ==================== */
+
 .dark .from-gray-50 {
     --tw-gradient-from: #1e293b !important;
 }
@@ -68,35 +110,171 @@
     --tw-gradient-to: #1e293b !important;
 }
 
-/* Special cases for cards with shadow */
+/* ====================
+   Shadow Improvements
+   ==================== */
+
 .dark [class*="shadow"] {
-    --tw-shadow-color: rgba(0, 0, 0, 0.5);
+    --tw-shadow-color: rgba(0, 0, 0, 0.6) !important;
 }
 
-/* Badge backgrounds */
+.dark .shadow-sm {
+    box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.6) !important;
+}
+
+.dark .shadow-md {
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.6), 0 2px 4px -2px rgba(0, 0, 0, 0.6) !important;
+}
+
+.dark .shadow-lg {
+    box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.7), 0 4px 6px -4px rgba(0, 0, 0, 0.7) !important;
+}
+
+.dark .shadow-xl {
+    box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.8), 0 8px 10px -6px rgba(0, 0, 0, 0.8) !important;
+}
+
+.dark .shadow-2xl {
+    box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.9) !important;
+}
+
+/* ====================
+   Badge & Tag Styles
+   ==================== */
+
 .dark .bg-blue-50 {
-    background-color: rgba(59, 130, 246, 0.2) !important;
+    background-color: rgba(59, 130, 246, 0.15) !important;
 }
 
 .dark .text-blue-700 {
-    color: rgb(147, 197, 253) !important;
+    color: #93c5fd !important;
 }
 
-/* Alert/Info boxes */
+.dark .text-blue-600 {
+    color: #60a5fa !important;
+}
+
+.dark .bg-emerald-50 {
+    background-color: rgba(16, 185, 129, 0.15) !important;
+}
+
+.dark .text-emerald-600 {
+    color: #34d399 !important;
+}
+
+.dark .bg-amber-50 {
+    background-color: rgba(245, 158, 11, 0.15) !important;
+}
+
+.dark .text-amber-600 {
+    color: #fbbf24 !important;
+}
+
+.dark .border-amber-200 {
+    border-color: rgba(245, 158, 11, 0.3) !important;
+}
+
+/* ====================
+   Alert & Status Boxes
+   ==================== */
+
 .dark .bg-red-50 {
-    background-color: rgba(239, 68, 68, 0.2) !important;
+    background-color: rgba(239, 68, 68, 0.15) !important;
 }
 
 .dark .text-red-700,
 .dark .text-red-600 {
-    color: rgb(252, 165, 165) !important;
+    color: #fca5a5 !important;
 }
 
 .dark .border-red-200 {
     border-color: rgba(239, 68, 68, 0.3) !important;
 }
 
-/* Loading screen */
-.dark .bg-gradient-to-br {
-    background-image: linear-gradient(to bottom right, var(--bg-secondary), var(--bg-primary)) !important;
+.dark .bg-green-50 {
+    background-color: rgba(34, 197, 94, 0.15) !important;
+}
+
+.dark .text-green-600 {
+    color: #4ade80 !important;
+}
+
+/* ====================
+   Input & Form Elements
+   ==================== */
+
+.dark input::placeholder,
+.dark textarea::placeholder {
+    color: #6b7280 !important;
+    opacity: 0.7;
+}
+
+.dark input:focus,
+.dark textarea:focus,
+.dark select:focus {
+    border-color: var(--primary-400) !important;
+    box-shadow: 0 0 0 3px rgba(94, 206, 206, 0.2) !important;
+}
+
+/* ====================
+   Dropdown & Modals
+   ==================== */
+
+.dark .opacity-0 {
+    opacity: 0 !important;
+}
+
+.dark .group-hover\:opacity-100:hover {
+    opacity: 1 !important;
+}
+
+/* ====================
+   Improved Contrast
+   ==================== */
+
+.dark .text-white\/70 {
+    color: rgba(255, 255, 255, 0.8) !important;
+}
+
+.dark .text-white\/60 {
+    color: rgba(255, 255, 255, 0.7) !important;
+}
+
+.dark .text-white\/50 {
+    color: rgba(255, 255, 255, 0.6) !important;
+}
+
+/* ====================
+   Utility Improvements
+   ==================== */
+
+/* Better rounded corners in dark mode */
+.dark .rounded-xl,
+.dark .rounded-lg {
+    box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.05);
+}
+
+/* Improved dividers */
+.dark hr,
+.dark .divide-y>* {
+    border-color: var(--border-primary) !important;
+}
+
+/* Loading & Skeleton States */
+.dark .animate-pulse {
+    background: linear-gradient(90deg, #1e293b 25%, #334155 50%, #1e293b 75%);
+    background-size: 200% 100%;
+    animation: pulse 2s ease-in-out infinite;
+}
+
+/* ====================
+   Backdrop & Overlay
+   ==================== */
+
+.dark .bg-black\/50 {
+    background-color: rgba(0, 0, 0, 0.7) !important;
+}
+
+.dark .backdrop-blur-sm {
+    backdrop-filter: blur(8px) !important;
 }
