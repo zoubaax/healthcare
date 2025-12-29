@@ -14,7 +14,7 @@ function App() {
   return (
     <ThemeProvider>
       <AuthProvider>
-        <Router>
+        <Router basename={import.meta.env.BASE_URL}>
           <Routes>
             {/* Public Routes */}
             <Route path="/" element={<Home />} />
