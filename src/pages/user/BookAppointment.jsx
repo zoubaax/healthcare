@@ -574,8 +574,8 @@ export default function BookAppointment() {
                           {/* Availability Message */}
                           {availabilityMessage.text && (
                             <div className={`p-4 rounded-xl flex items-center gap-3 animate-fadeIn ${availabilityMessage.type === 'error' ? 'bg-red-50 text-red-700 border border-red-100' :
-                                availabilityMessage.type === 'success' ? 'bg-emerald-50 text-emerald-700 border border-emerald-100' :
-                                  'bg-[#b0e7e7]/10 text-[#1a5858] border border-[#b0e7e7]/20'
+                              availabilityMessage.type === 'success' ? 'bg-emerald-50 text-emerald-700 border border-emerald-100' :
+                                'bg-[#b0e7e7]/10 text-[#1a5858] border border-[#b0e7e7]/20'
                               }`}>
                               {availabilityMessage.type === 'verifying' ? (
                                 <Loader2 className="w-5 h-5 animate-spin" />
@@ -613,10 +613,10 @@ export default function BookAppointment() {
                                       onClick={() => handleSlotSelection(slot)}
                                       disabled={verifyingSlot}
                                       className={`p-4 rounded-2xl border-2 transition-all text-left group relative overflow-hidden ${isSelected
-                                          ? 'border-[#1a5858] bg-[#1a5858] text-white shadow-lg scale-[1.02]'
-                                          : !isAvailable
-                                            ? 'bg-gray-50 border-gray-200 cursor-not-allowed opacity-60 grayscale'
-                                            : 'bg-white border-gray-100 hover:border-[#b0e7e7] hover:shadow-md'
+                                        ? 'border-[#1a5858] bg-[#1a5858] text-white shadow-lg scale-[1.02]'
+                                        : !isAvailable
+                                          ? 'bg-gray-50 border-gray-200 cursor-not-allowed opacity-60 grayscale'
+                                          : 'bg-white border-gray-100 hover:border-[#b0e7e7] hover:shadow-md'
                                         }`}
                                     >
                                       {isSelected && (

@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react'
 import { supabase } from '../../lib/supabase'
 import { Link } from 'react-router-dom'
+import ThemeToggle from '../../components/ThemeToggle'
 import {
   Heart,
   Stethoscope,
@@ -57,18 +58,19 @@ export default function Home() {
   }
 
   return (
-    <div className="min-h-screen bg-white">
+    <div className="min-h-screen bg-white dark:bg-[#0f172a] transition-colors duration-300">
       {/* Navigation */}
-      <nav className="bg-white/90 backdrop-blur-md sticky top-0 z-50 border-b border-gray-100 shadow-sm">
+      <nav className="bg-white/90 dark:bg-[#1e293b]/90 backdrop-blur-md sticky top-0 z-50 border-b border-gray-100 dark:border-gray-700 shadow-sm transition-colors duration-300">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex justify-between items-center h-16">
             <div className="flex items-center gap-3">
               <div className="w-10 h-10 rounded-xl bg-gradient-to-br from-[#b0e7e7] to-[#8adcdc] flex items-center justify-center shadow-md">
                 <Heart className="w-6 h-6 text-[#1a5858]" />
               </div>
-              <span className="font-bold text-xl text-gray-900">HealthCare Pro</span>
+              <span className="font-bold text-xl text-gray-900 dark:text-white">HealthCare Pro</span>
             </div>
             <div className="flex items-center gap-4">
+              <ThemeToggle />
               <Link
                 to="/login"
                 className="flex items-center gap-2 px-4 py-2 bg-gradient-to-r from-[#b0e7e7] to-[#8adcdc] text-[#1a5858] font-semibold rounded-lg hover:opacity-90 transition-opacity text-sm"
@@ -82,7 +84,7 @@ export default function Home() {
       </nav>
 
       {/* Hero Section */}
-      <header className="relative overflow-hidden bg-gradient-to-br from-gray-50 to-gray-100">
+      <header className="relative overflow-hidden bg-gradient-to-br from-gray-50 to-gray-100 dark:from-[#1e293b] dark:to-[#0f172a] transition-colors duration-300">
         {/* Background Pattern */}
         <div className="absolute inset-0 opacity-5">
           <div className="absolute inset-0" style={{
@@ -90,11 +92,11 @@ export default function Home() {
             backgroundSize: '40px 40px'
           }}></div>
         </div>
-        
+
         {/* Gradient Blobs */}
         <div className="absolute -top-20 -left-20 w-96 h-96 bg-[#b0e7e7]/20 rounded-full blur-3xl"></div>
         <div className="absolute -bottom-20 -right-20 w-96 h-96 bg-[#8adcdc]/20 rounded-full blur-3xl"></div>
-        
+
         <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16 lg:py-24">
           <div className="grid lg:grid-cols-2 gap-12 items-center">
             <div>
@@ -102,20 +104,20 @@ export default function Home() {
                 <Sparkles className="w-4 h-4 text-[#1a5858]" />
                 <span className="text-sm font-medium text-gray-700">Professional Mental Healthcare</span>
               </div>
-              
+
               <h1 className="text-4xl lg:text-5xl font-bold text-gray-900 mb-6 leading-tight">
                 Your Journey to <br />
                 <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#1a5858] to-[#3ebdbd]">
                   Better Mental Health
                 </span>
               </h1>
-              
+
               <p className="text-lg text-gray-600 mb-8 leading-relaxed">
-                Connect with licensed mental health professionals who are dedicated to 
-                supporting your wellbeing. Take the first step towards a healthier, 
+                Connect with licensed mental health professionals who are dedicated to
+                supporting your wellbeing. Take the first step towards a healthier,
                 happier you with our compassionate care team.
               </p>
-              
+
               <div className="flex flex-wrap gap-4">
                 <a
                   href="#doctors"
@@ -134,7 +136,7 @@ export default function Home() {
                 </a>
               </div>
             </div>
-            
+
             <div className="relative">
               <div className="absolute inset-0 bg-gradient-to-br from-[#b0e7e7] to-[#8adcdc] rounded-3xl transform -rotate-6"></div>
               <div className="relative bg-white rounded-3xl p-8 shadow-2xl border border-gray-100">
@@ -209,7 +211,7 @@ export default function Home() {
             Meet Our Mental Health Professionals
           </h2>
           <p className="text-gray-600 max-w-2xl mx-auto">
-            Our team of licensed therapists and psychologists brings expertise and compassion 
+            Our team of licensed therapists and psychologists brings expertise and compassion
             to every session, helping you navigate your mental health journey.
           </p>
         </div>
@@ -294,12 +296,12 @@ export default function Home() {
                 <Sparkles className="w-4 h-4 text-white" />
                 <span className="text-sm font-medium text-white">Why Choose Us</span>
               </div>
-              
+
               <h2 className="text-3xl font-bold text-white mb-8">
                 Compassionate Care, <br />
                 Exceptional Results
               </h2>
-              
+
               <div className="space-y-6">
                 {[
                   {
@@ -333,13 +335,13 @@ export default function Home() {
                 })}
               </div>
             </div>
-            
+
             <div className="relative">
               <div className="absolute inset-0 bg-gradient-to-br from-[#b0e7e7]/20 to-[#8adcdc]/20 rounded-3xl transform rotate-3"></div>
               <div className="relative bg-white/10 backdrop-blur-sm p-8 rounded-3xl border border-white/20">
                 <div className="text-white/90 text-lg italic leading-relaxed mb-6">
-                  "Taking the first step towards better mental health is the most important 
-                  step you can take. We're here to support you on this journey with 
+                  "Taking the first step towards better mental health is the most important
+                  step you can take. We're here to support you on this journey with
                   compassion and expertise."
                 </div>
                 <div className="flex items-center gap-3">

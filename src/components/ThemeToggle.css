@@ -1,0 +1,137 @@
+/* Theme Toggle Button */
+.theme-toggle {
+    position: relative;
+    width: 70px;
+    height: 36px;
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 0;
+    transition: transform 0.2s ease;
+}
+
+.theme-toggle:hover {
+    transform: scale(1.05);
+}
+
+.theme-toggle:active {
+    transform: scale(0.95);
+}
+
+.theme-toggle-track {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(135deg, var(--primary-400), var(--primary-600));
+    border-radius: 18px;
+    overflow: hidden;
+    box-shadow:
+        inset 0 2px 4px rgba(0, 0, 0, 0.2),
+        0 4px 8px rgba(0, 0, 0, 0.1);
+    transition: background 0.4s ease;
+}
+
+.dark .theme-toggle-track {
+    background: linear-gradient(135deg, #1e293b, #0f172a);
+}
+
+.theme-toggle-thumb {
+    position: absolute;
+    top: 3px;
+    left: 3px;
+    width: 30px;
+    height: 30px;
+    background: white;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: transform 0.4s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.3);
+    z-index: 2;
+}
+
+.dark .theme-toggle-thumb {
+    transform: translateX(34px);
+    background: linear-gradient(135deg, #fbbf24, #f59e0b);
+}
+
+.theme-icon {
+    width: 18px;
+    height: 18px;
+    color: var(--primary-600);
+    transition: all 0.3s ease;
+}
+
+.dark .theme-icon {
+    color: white;
+    transform: rotate(180deg);
+}
+
+/* Stars Animation */
+.theme-toggle-stars {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    pointer-events: none;
+    opacity: 0;
+    transition: opacity 0.4s ease;
+}
+
+.dark .theme-toggle-stars {
+    opacity: 1;
+}
+
+.star {
+    position: absolute;
+    color: white;
+    font-size: 8px;
+    animation: twinkle 2s ease-in-out infinite;
+}
+
+.star-1 {
+    top: 8px;
+    left: 12px;
+    animation-delay: 0s;
+}
+
+.star-2 {
+    top: 18px;
+    left: 20px;
+    animation-delay: 0.5s;
+    font-size: 6px;
+}
+
+.star-3 {
+    top: 12px;
+    left: 28px;
+    animation-delay: 1s;
+    font-size: 7px;
+}
+
+@keyframes twinkle {
+
+    0%,
+    100% {
+        opacity: 0.3;
+        transform: scale(1);
+    }
+
+    50% {
+        opacity: 1;
+        transform: scale(1.2);
+    }
+}
+
+/* Focus styles for accessibility */
+.theme-toggle:focus-visible {
+    outline: 2px solid var(--primary-400);
+    outline-offset: 4px;
+    border-radius: 20px;
+}
+
+.dark .theme-toggle:focus-visible {
+    outline-color: var(--primary-300);
+}

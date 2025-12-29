@@ -185,11 +185,11 @@ export default function DoctorManagement() {
 
   const filteredDoctors = doctors.filter(doctor => {
     const matchesSearch = doctor.name.toLowerCase().includes(searchTerm.toLowerCase()) ||
-                         doctor.specialty.toLowerCase().includes(searchTerm.toLowerCase()) ||
-                         doctor.email?.toLowerCase().includes(searchTerm.toLowerCase())
-    
+      doctor.specialty.toLowerCase().includes(searchTerm.toLowerCase()) ||
+      doctor.email?.toLowerCase().includes(searchTerm.toLowerCase())
+
     const matchesFilter = filterSpecialty === 'all' || doctor.specialty === filterSpecialty
-    
+
     return matchesSearch && matchesFilter
   })
 
@@ -282,15 +282,15 @@ export default function DoctorManagement() {
               />
             </div>
           </div>
-          
+
           <div className="flex items-center space-x-3">
             <div className="flex items-center space-x-2 bg-gray-50 rounded-lg p-1">
               <Filter className="w-4 h-4 text-gray-500" />
               <button
                 onClick={() => setFilterSpecialty('all')}
                 className={`px-4 py-2 rounded-md text-sm font-medium transition-all ${filterSpecialty === 'all'
-                    ? 'bg-white text-[#1a5858] shadow-sm'
-                    : 'text-gray-600 hover:text-gray-900'
+                  ? 'bg-white text-[#1a5858] shadow-sm'
+                  : 'text-gray-600 hover:text-gray-900'
                   }`}
               >
                 All
@@ -300,15 +300,15 @@ export default function DoctorManagement() {
                   key={specialty}
                   onClick={() => setFilterSpecialty(specialty)}
                   className={`px-4 py-2 rounded-md text-sm font-medium transition-all ${filterSpecialty === specialty
-                      ? 'bg-white text-[#1a5858] shadow-sm'
-                      : 'text-gray-600 hover:text-gray-900'
+                    ? 'bg-white text-[#1a5858] shadow-sm'
+                    : 'text-gray-600 hover:text-gray-900'
                     }`}
                 >
                   {specialty}
                 </button>
               ))}
             </div>
-            
+
             <button
               onClick={fetchDoctors}
               className="p-2.5 bg-gray-50 text-gray-600 hover:bg-gray-100 rounded-lg transition-colors"
@@ -316,7 +316,7 @@ export default function DoctorManagement() {
             >
               <RefreshCw className="w-5 h-5" />
             </button>
-            
+
             <button
               onClick={() => {
                 resetForm()
@@ -366,7 +366,7 @@ export default function DoctorManagement() {
                     </div>
                   </div>
                 )}
-                
+
                 {/* Actions Overlay */}
                 <div className="absolute top-3 right-3 flex items-center space-x-1 opacity-0 group-hover:opacity-100 transition-opacity duration-200">
                   <button
@@ -402,7 +402,7 @@ export default function DoctorManagement() {
                       </div>
                     </div>
                   </div>
-                  
+
                   <div className="text-right">
                     <p className="text-sm font-medium text-gray-900">{doctor.appointments?.[0]?.count || 0}</p>
                     <p className="text-xs text-gray-500">appointments</p>
@@ -444,7 +444,7 @@ export default function DoctorManagement() {
                     <Calendar className="w-4 h-4" />
                     <span>Manage Availability</span>
                   </button>
-                  
+
                   <button
                     onClick={() => handleEdit(doctor)}
                     className="p-2.5 text-gray-600 hover:text-gray-900 hover:bg-gray-100 rounded-lg transition-colors"

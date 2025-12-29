@@ -106,7 +106,7 @@ export default function StaffManagement() {
         .update({ is_active: !staffMember.is_active })
         .eq('id', staffMember.id)
       fetchStaff()
-    } catch (error) { 
+    } catch (error) {
       console.error(error)
       alert('Failed to update status')
     }
@@ -118,7 +118,7 @@ export default function StaffManagement() {
       const { error } = await supabase.from('staff').delete().eq('id', staffMember.id)
       if (error) throw error
       fetchStaff()
-    } catch (error) { 
+    } catch (error) {
       console.error(error)
       alert('Failed to delete staff member')
     }
@@ -148,7 +148,7 @@ export default function StaffManagement() {
 
   const filteredStaff = staff.filter(member => {
     const matchesSearch = member.email.toLowerCase().includes(searchTerm.toLowerCase()) ||
-                         member.role.toLowerCase().includes(searchTerm.toLowerCase())
+      member.role.toLowerCase().includes(searchTerm.toLowerCase())
     const matchesRole = filterRole === 'all' || member.role === filterRole
     return matchesSearch && matchesRole
   })
@@ -232,7 +232,7 @@ export default function StaffManagement() {
               />
             </div>
           </div>
-          
+
           <div className="flex items-center space-x-3">
             <div className="flex items-center space-x-2 bg-gray-50 rounded-lg p-1">
               <Filter className="w-4 h-4 text-gray-500" />
@@ -241,15 +241,15 @@ export default function StaffManagement() {
                   key={role}
                   onClick={() => setFilterRole(role)}
                   className={`px-4 py-2 rounded-md text-sm font-medium transition-all ${filterRole === role
-                      ? 'bg-white text-[#1a5858] shadow-sm'
-                      : 'text-gray-600 hover:text-gray-900'
+                    ? 'bg-white text-[#1a5858] shadow-sm'
+                    : 'text-gray-600 hover:text-gray-900'
                     }`}
                 >
                   {role.charAt(0).toUpperCase() + role.slice(1)}
                 </button>
               ))}
             </div>
-            
+
             <button
               onClick={fetchStaff}
               className="p-2.5 bg-gray-50 text-gray-600 hover:bg-gray-100 rounded-lg transition-colors"
@@ -257,7 +257,7 @@ export default function StaffManagement() {
             >
               <RefreshCw className="w-5 h-5" />
             </button>
-            
+
             <button
               onClick={() => {
                 resetForm()
@@ -277,7 +277,7 @@ export default function StaffManagement() {
         <div className="px-6 py-4 border-b border-gray-100">
           <h3 className="font-semibold text-gray-900">Staff Members ({filteredStaff.length})</h3>
         </div>
-        
+
         <div className="divide-y divide-gray-100">
           {filteredStaff.length === 0 ? (
             <div className="p-12 text-center">
@@ -302,13 +302,13 @@ export default function StaffManagement() {
                       </div>
                       <div className={`absolute -bottom-1 -right-1 w-4 h-4 rounded-full border-2 border-white ${member.is_active ? 'bg-green-500' : 'bg-gray-400'}`}></div>
                     </div>
-                    
+
                     <div>
                       <div className="flex items-center space-x-3">
                         <p className="font-semibold text-gray-900">{member.email}</p>
-                        <div className={`px-2.5 py-1 rounded-full text-xs font-semibold ${member.role === 'admin' 
-                            ? 'bg-purple-50 text-purple-700 border border-purple-100' 
-                            : 'bg-blue-50 text-blue-700 border border-blue-100'
+                        <div className={`px-2.5 py-1 rounded-full text-xs font-semibold ${member.role === 'admin'
+                          ? 'bg-purple-50 text-purple-700 border border-purple-100'
+                          : 'bg-blue-50 text-blue-700 border border-blue-100'
                           }`}>
                           {member.role === 'admin' ? 'Administrator' : 'Staff'}
                         </div>
@@ -325,19 +325,19 @@ export default function StaffManagement() {
                       </div>
                     </div>
                   </div>
-                  
+
                   <div className="flex items-center space-x-2">
                     <button
                       onClick={() => handleToggleActive(member)}
                       className={`p-2 rounded-lg transition-colors ${member.is_active
-                          ? 'bg-amber-50 text-amber-600 hover:bg-amber-100'
-                          : 'bg-emerald-50 text-emerald-600 hover:bg-emerald-100'
+                        ? 'bg-amber-50 text-amber-600 hover:bg-amber-100'
+                        : 'bg-emerald-50 text-emerald-600 hover:bg-emerald-100'
                         }`}
                       title={member.is_active ? 'Deactivate account' : 'Activate account'}
                     >
                       {member.is_active ? <XCircle className="w-5 h-5" /> : <CheckCircle className="w-5 h-5" />}
                     </button>
-                    
+
                     <button
                       onClick={() => handleEdit(member)}
                       className="p-2 text-blue-600 hover:bg-blue-50 rounded-lg transition-colors"
@@ -345,7 +345,7 @@ export default function StaffManagement() {
                     >
                       <Edit className="w-5 h-5" />
                     </button>
-                    
+
                     <div className="relative group">
                       <button className="p-2 text-gray-400 hover:text-gray-600 hover:bg-gray-50 rounded-lg transition-colors">
                         <MoreVertical className="w-5 h-5" />
@@ -462,8 +462,8 @@ export default function StaffManagement() {
                     type="button"
                     onClick={() => setFormData({ ...formData, role: 'staff' })}
                     className={`p-4 border rounded-xl transition-all ${formData.role === 'staff'
-                        ? 'border-[#b0e7e7] bg-[#b0e7e7]/10 ring-2 ring-[#b0e7e7]/20'
-                        : 'border-gray-200 hover:border-gray-300'
+                      ? 'border-[#b0e7e7] bg-[#b0e7e7]/10 ring-2 ring-[#b0e7e7]/20'
+                      : 'border-gray-200 hover:border-gray-300'
                       }`}
                   >
                     <div className="flex flex-col items-center space-y-2">
@@ -476,8 +476,8 @@ export default function StaffManagement() {
                     type="button"
                     onClick={() => setFormData({ ...formData, role: 'admin' })}
                     className={`p-4 border rounded-xl transition-all ${formData.role === 'admin'
-                        ? 'border-purple-500 bg-purple-50 ring-2 ring-purple-200'
-                        : 'border-gray-200 hover:border-gray-300'
+                      ? 'border-purple-500 bg-purple-50 ring-2 ring-purple-200'
+                      : 'border-gray-200 hover:border-gray-300'
                       }`}
                   >
                     <div className="flex flex-col items-center space-y-2">

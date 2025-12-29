@@ -70,8 +70,8 @@ export default function AdminDashboard() {
                   key={item.id}
                   onClick={() => setActiveTab(item.id)}
                   className={`w-full flex items-center gap-3 px-4 py-3 rounded-xl transition-all duration-200 ${activeTab === item.id
-                      ? 'bg-white/10 text-white shadow-lg shadow-black/10'
-                      : 'text-white/70 hover:text-white hover:bg-white/5'
+                    ? 'bg-white/10 text-white shadow-lg shadow-black/10'
+                    : 'text-white/70 hover:text-white hover:bg-white/5'
                     }`}
                 >
                   <div className={`p-2 rounded-lg ${activeTab === item.id ? 'bg-white/20' : 'bg-white/10'}`}>
@@ -132,7 +132,7 @@ export default function AdminDashboard() {
             <div className="flex items-center gap-3">
               {/* Notifications */}
               <div className="relative group">
-                <button 
+                <button
                   className="relative p-2 hover:bg-gray-100 rounded-lg transition-colors"
                   aria-label="Notifications"
                 >
@@ -166,7 +166,7 @@ export default function AdminDashboard() {
               </div>
 
               {/* Settings */}
-              <button 
+              <button
                 className="p-2 hover:bg-gray-100 rounded-lg transition-colors"
                 aria-label="Settings"
               >

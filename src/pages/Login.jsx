@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react'
 import { useNavigate, Link } from 'react-router-dom'
 import { useAuth } from '../contexts/AuthContext'
+import ThemeToggle from '../components/ThemeToggle'
 import {
   Shield,
   Lock,
@@ -63,14 +64,17 @@ export default function Login() {
         <div className="h-full flex flex-col justify-between">
           {/* Top Logo */}
           <div>
-            <div className="flex items-center gap-3 mb-6">
-              <div className="w-12 h-12 rounded-xl bg-gradient-to-br from-[#b0e7e7] to-[#8adcdc] flex items-center justify-center shadow-lg">
-                <Heart className="w-6 h-6 text-[#1a5858]" />
+            <div className="flex items-center justify-between mb-6">
+              <div className="flex items-center gap-3">
+                <div className="w-12 h-12 rounded-xl bg-gradient-to-br from-[#b0e7e7] to-[#8adcdc] flex items-center justify-center shadow-lg">
+                  <Heart className="w-6 h-6 text-[#1a5858]" />
+                </div>
+                <div>
+                  <h1 className="text-xl font-bold text-white">HealthCare Pro</h1>
+                  <p className="text-xs text-white/60">Professional Healthcare Platform</p>
+                </div>
               </div>
-              <div>
-                <h1 className="text-xl font-bold text-white">HealthCare Pro</h1>
-                <p className="text-xs text-white/60">Professional Healthcare Platform</p>
-              </div>
+              <ThemeToggle />
             </div>
 
             {/* Welcome Message */}
@@ -79,7 +83,7 @@ export default function Login() {
                 Welcome Back to Healthcare Pro
               </h2>
               <p className="text-white/80 text-sm">
-                Sign in to access the staff and admin portal for managing appointments, 
+                Sign in to access the staff and admin portal for managing appointments,
                 doctors, and patient sessions efficiently.
               </p>
             </div>
@@ -131,7 +135,10 @@ export default function Login() {
       <div className="w-full lg:w-1/2 flex items-center justify-center p-4 lg:p-8">
         <div className="w-full max-w-sm lg:max-w-md">
           {/* Mobile Logo (Hidden on desktop) */}
-          <div className="lg:hidden flex flex-col items-center mb-6">
+          <div className="lg:hidden flex flex-col items-center mb-6 relative">
+            <div className="absolute top-0 right-0">
+              <ThemeToggle />
+            </div>
             <div className="w-16 h-16 rounded-xl bg-gradient-to-br from-[#b0e7e7] to-[#8adcdc] flex items-center justify-center shadow-lg mb-3">
               <Heart className="w-8 h-8 text-[#1a5858]" />
             </div>

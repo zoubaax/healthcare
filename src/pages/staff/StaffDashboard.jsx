@@ -68,25 +68,25 @@ export default function StaffDashboard() {
   }
 
   const menuItems = [
-    { 
-      id: 'doctors', 
-      label: 'Doctors', 
-      icon: <Stethoscope className="w-5 h-5" />, 
+    {
+      id: 'doctors',
+      label: 'Doctors',
+      icon: <Stethoscope className="w-5 h-5" />,
       color: 'text-blue-500',
       badge: stats.totalDoctors,
       description: 'Manage medical staff'
     },
-    { 
-      id: 'timeslots', 
-      label: 'Time Slots', 
-      icon: <Calendar className="w-5 h-5" />, 
+    {
+      id: 'timeslots',
+      label: 'Time Slots',
+      icon: <Calendar className="w-5 h-5" />,
       color: 'text-emerald-500',
       description: 'Schedule availability'
     },
-    { 
-      id: 'appointments', 
-      label: 'Appointments', 
-      icon: <FileText className="w-5 h-5" />, 
+    {
+      id: 'appointments',
+      label: 'Appointments',
+      icon: <FileText className="w-5 h-5" />,
       color: 'text-purple-500',
       badge: stats.pendingCount,
       badgeColor: 'bg-amber-500',
@@ -128,8 +128,8 @@ export default function StaffDashboard() {
                   key={item.id}
                   onClick={() => setActiveTab(item.id)}
                   className={`w-full flex items-center gap-3 px-4 py-3 rounded-xl transition-all duration-200 ${activeTab === item.id
-                      ? 'bg-white/10 text-white shadow-lg shadow-black/10'
-                      : 'text-white/70 hover:text-white hover:bg-white/5'
+                    ? 'bg-white/10 text-white shadow-lg shadow-black/10'
+                    : 'text-white/70 hover:text-white hover:bg-white/5'
                     }`}
                 >
                   <div className={`p-2 rounded-lg ${activeTab === item.id ? 'bg-white/20' : 'bg-white/10'}`}>

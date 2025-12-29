@@ -140,7 +140,7 @@ export default function AppointmentManagement() {
     setSelectedAppointment(appointment)
   }
 
-  const filteredAppointments = appointments.filter(appointment => 
+  const filteredAppointments = appointments.filter(appointment =>
     `${appointment.first_name} ${appointment.last_name}`.toLowerCase().includes(searchTerm.toLowerCase()) ||
     appointment.email.toLowerCase().includes(searchTerm.toLowerCase()) ||
     appointment.doctors?.name.toLowerCase().includes(searchTerm.toLowerCase())
@@ -226,7 +226,7 @@ export default function AppointmentManagement() {
               />
             </div>
           </div>
-          
+
           <div className="flex items-center space-x-3">
             <div className="flex items-center space-x-2 bg-gray-50 rounded-lg p-1">
               <Filter className="w-4 h-4 text-gray-500" />
@@ -235,15 +235,15 @@ export default function AppointmentManagement() {
                   key={f}
                   onClick={() => setFilter(f)}
                   className={`px-4 py-2 rounded-md text-sm font-medium transition-all ${filter === f
-                      ? 'bg-white text-[#1a5858] shadow-sm'
-                      : 'text-gray-600 hover:text-gray-900'
+                    ? 'bg-white text-[#1a5858] shadow-sm'
+                    : 'text-gray-600 hover:text-gray-900'
                     }`}
                 >
                   {f.charAt(0).toUpperCase() + f.slice(1)}
                 </button>
               ))}
             </div>
-            
+
             <button
               onClick={fetchAppointments}
               className="p-2.5 bg-gray-50 text-gray-600 hover:bg-gray-100 rounded-lg transition-colors"
@@ -251,7 +251,7 @@ export default function AppointmentManagement() {
             >
               <RefreshCw className="w-5 h-5" />
             </button>
-            
+
             <button className="flex items-center space-x-2 px-4 py-2.5 bg-gradient-to-r from-[#b0e7e7] to-[#8adcdc] text-[#1a5858] font-semibold rounded-lg hover:opacity-90 transition-opacity">
               <Printer className="w-5 h-5" />
               <span>Export</span>
@@ -291,7 +291,7 @@ export default function AppointmentManagement() {
                         </span>
                       </div>
                       <div className={`absolute -bottom-1 -right-1 w-3 h-3 rounded-full border-2 border-white ${appointment.status === 'confirmed' ? 'bg-emerald-500' :
-                          appointment.status === 'pending' ? 'bg-amber-500' : 'bg-rose-500'
+                        appointment.status === 'pending' ? 'bg-amber-500' : 'bg-rose-500'
                         }`}></div>
                     </div>
                     <div>
@@ -305,15 +305,15 @@ export default function AppointmentManagement() {
                           </span>
                         </div>
                         <div className={`px-2 py-0.5 text-xs font-semibold rounded-full ${appointment.status === 'confirmed' ? 'bg-emerald-100 text-emerald-800' :
-                            appointment.status === 'pending' ? 'bg-amber-100 text-amber-800' :
-                              'bg-rose-100 text-rose-800'
+                          appointment.status === 'pending' ? 'bg-amber-100 text-amber-800' :
+                            'bg-rose-100 text-rose-800'
                           }`}>
                           {appointment.status}
                         </div>
                       </div>
                     </div>
                   </div>
-                  
+
                   <button
                     onClick={() => handleViewDetails(appointment)}
                     className="p-2 text-gray-400 hover:text-gray-600 hover:bg-gray-100 rounded-lg transition-colors"
@@ -351,7 +351,7 @@ export default function AppointmentManagement() {
                       {appointment.doctors?.specialty}
                     </p>
                   </div>
-                  
+
                   <div className="p-4 bg-gray-50 rounded-lg">
                     <div className="flex items-center space-x-2 mb-2">
                       <CalendarDays className="w-4 h-4 text-gray-500" />
@@ -377,7 +377,7 @@ export default function AppointmentManagement() {
                       <span>Booked: {format(new Date(appointment.created_at), 'MMM dd, HH:mm')}</span>
                     </div>
                   </div>
-                  
+
                   <div className="flex items-center space-x-2">
                     {appointment.status === 'pending' && (
                       <button
@@ -442,7 +442,7 @@ export default function AppointmentManagement() {
                 <XCircle className="w-5 h-5 text-gray-500" />
               </button>
             </div>
-            
+
             <div className="p-6 space-y-6">
               {/* Patient Info */}
               <div className="flex items-center space-x-4">
@@ -458,8 +458,8 @@ export default function AppointmentManagement() {
                   <p className="text-gray-600">{selectedAppointment.email}</p>
                   <div className="flex items-center space-x-2 mt-2">
                     <div className={`px-3 py-1 text-xs font-semibold rounded-full ${selectedAppointment.status === 'confirmed' ? 'bg-emerald-100 text-emerald-800' :
-                        selectedAppointment.status === 'pending' ? 'bg-amber-100 text-amber-800' :
-                          'bg-rose-100 text-rose-800'
+                      selectedAppointment.status === 'pending' ? 'bg-amber-100 text-amber-800' :
+                        'bg-rose-100 text-rose-800'
                       }`}>
                       {selectedAppointment.status}
                     </div>
@@ -491,7 +491,7 @@ export default function AppointmentManagement() {
                   <p className="font-semibold text-gray-900">{selectedAppointment.doctors?.name || 'Not assigned'}</p>
                   <p className="text-gray-600">{selectedAppointment.doctors?.specialty}</p>
                 </div>
-                
+
                 <div className="p-4 bg-emerald-50 rounded-lg">
                   <p className="text-sm text-emerald-600 font-medium mb-2">Appointment Time</p>
                   <p className="font-semibold text-gray-900">

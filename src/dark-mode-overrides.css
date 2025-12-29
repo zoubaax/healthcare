@@ -1,0 +1,102 @@
+/* Additional Dark Mode Utilities for Tailwind Classes */
+
+/* Override hardcoded white backgrounds in dark mode */
+.dark .bg-white {
+    background-color: var(--bg-primary) !important;
+}
+
+.dark .bg-gray-50 {
+    background-color: var(--bg-secondary) !important;
+}
+
+.dark .bg-gray-100 {
+    background-color: var(--bg-tertiary) !important;
+}
+
+/* Text color overrides */
+.dark .text-gray-900 {
+    color: var(--text-primary) !important;
+}
+
+.dark .text-gray-800 {
+    color: var(--text-primary) !important;
+}
+
+.dark .text-gray-700 {
+    color: var(--text-secondary) !important;
+}
+
+.dark .text-gray-600 {
+    color: var(--text-tertiary) !important;
+}
+
+.dark .text-gray-500 {
+    color: var(--text-tertiary) !important;
+}
+
+/* Border overrides */
+.dark .border-gray-100 {
+    border-color: var(--border-primary) !important;
+}
+
+.dark .border-gray-200 {
+    border-color: var(--border-primary) !important;
+}
+
+.dark .border-gray-300 {
+    border-color: var(--border-secondary) !important;
+}
+
+/* Gradient backgrounds - adjust for dark mode */
+.dark .from-gray-50 {
+    --tw-gradient-from: #1e293b !important;
+}
+
+.dark .to-gray-100 {
+    --tw-gradient-to: #0f172a !important;
+}
+
+.dark .from-gray-100 {
+    --tw-gradient-from: #334155 !important;
+}
+
+.dark .to-gray-200 {
+    --tw-gradient-to: #475569 !important;
+}
+
+.dark .to-white {
+    --tw-gradient-to: #1e293b !important;
+}
+
+/* Special cases for cards with shadow */
+.dark [class*="shadow"] {
+    --tw-shadow-color: rgba(0, 0, 0, 0.5);
+}
+
+/* Badge backgrounds */
+.dark .bg-blue-50 {
+    background-color: rgba(59, 130, 246, 0.2) !important;
+}
+
+.dark .text-blue-700 {
+    color: rgb(147, 197, 253) !important;
+}
+
+/* Alert/Info boxes */
+.dark .bg-red-50 {
+    background-color: rgba(239, 68, 68, 0.2) !important;
+}
+
+.dark .text-red-700,
+.dark .text-red-600 {
+    color: rgb(252, 165, 165) !important;
+}
+
+.dark .border-red-200 {
+    border-color: rgba(239, 68, 68, 0.3) !important;
+}
+
+/* Loading screen */
+.dark .bg-gradient-to-br {
+    background-image: linear-gradient(to bottom right, var(--bg-secondary), var(--bg-primary)) !important;
+}

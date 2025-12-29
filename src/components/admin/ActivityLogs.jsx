@@ -1,21 +1,21 @@
 import { useEffect, useState } from 'react'
 import { supabase } from '../../lib/supabase'
 import { format } from 'date-fns'
-import { 
-  Calendar,
-  Clock,
-  Mail,
-  Phone,
-  Filter,
-  RefreshCw,
-  User,
-  Stethoscope,
-  AlertCircle,
-  CheckCircle,
-  XCircle,
-  Activity,
-  Search,
-  ChevronRight
+import {
+    Calendar,
+    Clock,
+    Mail,
+    Phone,
+    Filter,
+    RefreshCw,
+    User,
+    Stethoscope,
+    AlertCircle,
+    CheckCircle,
+    XCircle,
+    Activity,
+    Search,
+    ChevronRight
 } from 'lucide-react'
 
 export default function ActivityLogs() {
@@ -87,7 +87,7 @@ export default function ActivityLogs() {
         }
     }
 
-    const filteredLogs = logs.filter(log => 
+    const filteredLogs = logs.filter(log =>
         `${log.first_name} ${log.last_name}`.toLowerCase().includes(searchTerm.toLowerCase()) ||
         log.email.toLowerCase().includes(searchTerm.toLowerCase()) ||
         log.doctors?.name.toLowerCase().includes(searchTerm.toLowerCase())
@@ -137,8 +137,8 @@ export default function ActivityLogs() {
                                     key={f}
                                     onClick={() => setFilter(f)}
                                     className={`px-4 py-2 rounded-md text-sm font-medium transition-all ${filter === f
-                                            ? 'bg-white text-[#b0e7e7] shadow-sm'
-                                            : 'text-gray-600 hover:text-gray-900'
+                                        ? 'bg-white text-[#b0e7e7] shadow-sm'
+                                        : 'text-gray-600 hover:text-gray-900'
                                         }`}
                                 >
                                     {f.charAt(0).toUpperCase() + f.slice(1)}
@@ -241,7 +241,7 @@ export default function ActivityLogs() {
                                         </div>
                                         <div className="absolute -bottom-6 left-1/2 transform -translate-x-1/2 w-px h-6 bg-gray-200 group-last:hidden"></div>
                                     </div>
-                                    
+
                                     <div className="flex-1 min-w-0">
                                         <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-2">
                                             <div className="flex items-center space-x-3">
@@ -265,7 +265,7 @@ export default function ActivityLogs() {
                                                 {log.status.charAt(0).toUpperCase() + log.status.slice(1)}
                                             </span>
                                         </div>
-                                        
+
                                         <div className="mt-4 pl-11 space-y-3">
                                             {/* Doctor Info */}
                                             <div className="flex items-center space-x-3">

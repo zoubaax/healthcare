@@ -369,9 +369,9 @@ export default function SystemOverview() {
                   className="flex items-center space-x-3 p-3 rounded-lg hover:bg-gray-50 transition-colors group"
                 >
                   <div className={`w-10 h-10 rounded-full flex items-center justify-center font-bold text-white ${index === 0 ? 'bg-gradient-to-br from-amber-500 to-amber-600' :
-                      index === 1 ? 'bg-gradient-to-br from-gray-400 to-gray-500' :
-                        index === 2 ? 'bg-gradient-to-br from-amber-600 to-amber-700' :
-                          'bg-gradient-to-br from-blue-500 to-blue-600'
+                    index === 1 ? 'bg-gradient-to-br from-gray-400 to-gray-500' :
+                      index === 2 ? 'bg-gradient-to-br from-amber-600 to-amber-700' :
+                        'bg-gradient-to-br from-blue-500 to-blue-600'
                     }`}>
                     {index + 1}
                   </div>
@@ -417,7 +417,7 @@ export default function SystemOverview() {
                 <div className="flex items-center justify-between">
                   <div className="flex items-center space-x-4">
                     <div className={`p-2 rounded-lg ${booking.status === 'confirmed' ? 'bg-emerald-50' :
-                        booking.status === 'pending' ? 'bg-amber-50' : 'bg-rose-50'
+                      booking.status === 'pending' ? 'bg-amber-50' : 'bg-rose-50'
                       }`}>
                       {booking.status === 'confirmed' ? (
                         <CheckCircle className="w-5 h-5 text-emerald-600" />
@@ -433,8 +433,8 @@ export default function SystemOverview() {
                           {booking.first_name} {booking.last_name}
                         </p>
                         <span className={`px-2 py-1 text-xs font-medium rounded-full ${booking.status === 'confirmed' ? 'bg-emerald-100 text-emerald-800' :
-                            booking.status === 'pending' ? 'bg-amber-100 text-amber-800' :
-                              'bg-rose-100 text-rose-800'
+                          booking.status === 'pending' ? 'bg-amber-100 text-amber-800' :
+                            'bg-rose-100 text-rose-800'
                           }`}>
                           {booking.status}
                         </span>
