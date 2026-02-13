@@ -8,7 +8,6 @@ import AdminDashboard from './pages/admin/AdminDashboard'
 import StaffDashboard from './pages/staff/StaffDashboard'
 import Home from './pages/user/Home'
 import BookAppointment from './pages/user/BookAppointment'
-import './App.css'
 
 function App() {
   return (

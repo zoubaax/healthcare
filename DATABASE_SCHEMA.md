@@ -38,6 +38,8 @@ Stores doctor/psychologist information.
 | `name` | text | Doctor's full name |
 | `specialty` | text | Doctor's specialty area |
 | `description` | text | Professional description |
+| `email` | text | Doctor's professional email |
+| `phone` | text | Doctor's professional phone |
 | `profile_image_url` | text | URL to profile image in Supabase Storage |
 | `created_at` | timestamp | Record creation timestamp |
 | `updated_at` | timestamp | Last update timestamp |
@@ -150,6 +152,8 @@ CREATE TABLE doctors (
   name TEXT NOT NULL,
   specialty TEXT NOT NULL,
   description TEXT,
+  email TEXT,
+  phone TEXT,
   profile_image_url TEXT,
   created_at TIMESTAMP WITH TIME ZONE DEFAULT NOW(),
   updated_at TIMESTAMP WITH TIME ZONE DEFAULT NOW()
@@ -186,7 +190,8 @@ CREATE TABLE appointments (
 CREATE INDEX idx_staff_user_id ON staff(user_id);
 CREATE INDEX idx_staff_role ON staff(role);
 CREATE INDEX idx_doctors_name ON doctors(name);
-CREATE INDEX idx_time_slots_doctor_date ON time_slots(doctor_id, date);
+CREATE INDEX idx_doctors_specialty ON doctors(specialty);
+CREATE INDEX idx_doctors_email ON doctors(email);
 CREATE INDEX idx_time_slots_available ON time_slots(is_available);
 CREATE INDEX idx_appointments_status ON appointments(status);
 CREATE INDEX idx_appointments_email ON appointments(email);

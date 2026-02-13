@@ -1,172 +1,104 @@
-# Online Mental Health Session Booking Platform
+# 🏥 Healthcare Appointment & Mental Health Booking Platform
 
-A web-based frontend application built with React and Supabase for booking mental health listening sessions and psychological consultations.
+A modern, full-stack web application designed for booking mental health listening sessions and psychological consultations. Built with **React 19**, **Tailwind CSS**, and **Supabase**.
 
-## Features
+![Version](https://img.shields.io/badge/version-1.0.0-blue.svg)
+![React](https://img.shields.io/badge/React-19-61DAFB?logo=react)
+![Tailwind](https://img.shields.io/badge/Tailwind-4.0-38B2AC?logo=tailwind-css)
+![Supabase](https://img.shields.io/badge/Supabase-Database-3EC98E?logo=supabase)
 
-### Admin Dashboard
-- Create, edit, activate, and deactivate Staff accounts
-- View system overview (read-only statistics)
-- Admin-only access
+## ✨ Key Features
 
-### Staff Dashboard
-- Add, edit, and delete doctors/psychologists
-- Upload and manage doctor profile pictures
-- Manage professional descriptions and specialties
-- Manage available time slots for each doctor
-- View, confirm, update, and cancel appointments
+### 🌓 Premium Theme System
+- **Dynamic Dark/Light Mode**: Smooth transitions between themes with persistent user preference.
+- **System Awareness**: Automatically detects and matches OS theme settings.
+- **Glassmorphism UI**: Modern, sleek components with subtle blur effects.
 
-### User Side (Public)
-- Browse available doctors with photos, descriptions, and specialties
-- Select a doctor and choose an available date and time
-- Book sessions online
-- Fill in personal information during booking (name, education level, email, phone)
+### 👥 User Experience (Public)
+- **Doctor Discovery**: Browse professional profiles with photos, specialties, and bios.
+- **Real-time Booking**: Interactive time-slot selection for instant appointment scheduling.
+- **Seamless Flow**: Optimized booking process with personalized information collection.
 
-## Tech Stack
+### 👨‍⚕️ Staff Management Dashboard
+- **Profile Control**: Manage professional details, specialties, and profile imagery.
+- **Availability Management**: Interactive calendar/slot management for each doctor.
+- **Appointment Oversight**: View, confirm, and manage upcoming patient sessions.
 
-- **React 19** - Frontend framework
-- **Vite** - Build tool
-- **Tailwind CSS** - Styling
-- **Supabase** - Backend (Authentication, Database, Storage)
-- **React Router** - Routing
-- **date-fns** - Date manipulation
+### 🛡️ Admin Administration
+- **Staff Control**: Comprehensive management of staff accounts (creation, activation/deactivation).
+- **System Insights**: High-level overview of platform statistics and activity.
+- **Secure Access**: Role-based access control (RBAC) powered by Supabase Auth and RLS.
 
-## Prerequisites
+## 🚀 Tech Stack
 
-- Node.js (v18 or higher)
+- **Frontend**: React 19, Vite, Tailwind CSS 4.0
+- **State & Routing**: React Context API, React Router 7
+- **Backend-as-a-Service**: Supabase (Auth, PostgreSQL, Storage)
+- **Icons & UI**: Lucide React, Framer Motion (micro-animations)
+- **Utilities**: date-fns, EmailJS
+
+## 🛠️ Getting Started
+
+### Prerequisites
+- Node.js (v18+)
 - npm or yarn
-- Supabase account and project
+- A Supabase project
 
-## Installation
+### Installation
 
-1. Clone the repository:
-```bash
-git clone <repository-url>
-cd healthcare/healthcare
-```
-
-2. Install dependencies:
-```bash
-npm install
-```
-
-3. Set up environment variables:
-   - Copy `.env.example` to `.env` (if it exists) or create a new `.env` file
-   - Add your Supabase credentials:
-```env
-VITE_SUPABASE_URL=your_supabase_project_url
-VITE_SUPABASE_ANON_KEY=your_supabase_anon_key
-```
-
-4. Set up Supabase database:
-   - Follow the instructions in `DATABASE_SCHEMA.md`
-   - Run the SQL scripts to create tables, indexes, and RLS policies
-   - Create the `doctor-images` storage bucket
-
-5. Create your first admin account:
-   - Go to Supabase Dashboard > Authentication
-   - Create a new user manually
-   - Note the user ID and email
-   - Run this SQL in the SQL Editor:
-   ```sql
-   INSERT INTO staff (user_id, email, role, is_active)
-   VALUES ('<user_id_from_auth>', '<email_address>', 'admin', true);
+1. **Clone & Install**
+   ```bash
+   git clone <repository-url>
+   cd healthcare/healthcare
+   npm install
    ```
 
-## Running the Application
+2. **Environment Configuration**
+   Create a `.env` file in the root directory:
+   ```env
+   VITE_SUPABASE_URL=your_project_url
+   VITE_SUPABASE_ANON_KEY=your_anon_key
+   ```
 
-```bash
-npm run dev
+3. **Database Setup**
+   - Execute the SQL scripts located in `/supabase` (follow the order in `SUPABASE_SETUP.md`).
+   - Create a public storage bucket named `doctor-images` in your Supabase dashboard.
+
+4. **Launch**
+   ```bash
+   npm run dev
+   ```
+
+## 📂 Project Structure
+
+```text
+src/
+├── assets/             # Images, logos, and global styles
+├── components/         # Reusable UI components
+│   ├── admin/          # Admin-specific modules (Staff, Logs)
+│   ├── staff/          # Staff-specific modules (Doctors, Appointments)
+│   └── ui/             # Common UI elements (ThemeToggle, etc.)
+├── contexts/           # State management (Auth, Theme)
+├── lib/                # Third-party configurations (Supabase client)
+├── pages/              # Main route components
+│   ├── admin/          # Administrator views
+│   ├── staff/          # Physician/Staff views
+│   └── user/           # Patient-facing views
+└── styles/             # Global CSS and theme overrides
 ```
 
-The application will be available at `http://localhost:5173`
+## 🔒 Security & Performance
 
-## Project Structure
+- **Row Level Security (RLS)**: Sensitive data is protected at the database level.
+- **Optimized Assets**: Lazy loading and optimized image handling.
+- **Persistent Sessions**: Secure authentication with automatically refreshed tokens.
 
-```
-healthcare/
-├── src/
-│   ├── components/
-│   │   ├── admin/
-│   │   │   ├── StaffManagement.jsx
-│   │   │   └── SystemOverview.jsx
-│   │   ├── staff/
-│   │   │   ├── DoctorManagement.jsx
-│   │   │   ├── TimeSlotManagement.jsx
-│   │   │   └── AppointmentManagement.jsx
-│   │   └── ProtectedRoute.jsx
-│   ├── contexts/
-│   │   └── AuthContext.jsx
-│   ├── lib/
-│   │   └── supabase.js
-│   ├── pages/
-│   │   ├── admin/
-│   │   │   └── AdminDashboard.jsx
-│   │   ├── staff/
-│   │   │   └── StaffDashboard.jsx
-│   │   ├── user/
-│   │   │   ├── Home.jsx
-│   │   │   └── BookAppointment.jsx
-│   │   ├── Login.jsx
-│   │   └── Unauthorized.jsx
-│   ├── App.jsx
-│   ├── main.jsx
-│   └── index.css
-├── DATABASE_SCHEMA.md
-└── README.md
-```
+## 📄 Documentation
 
-## Important Notes
+- [Supabase Setup Guide](SUPABASE_SETUP.md)
+- [Database Schema Details](DATABASE_SCHEMA.md)
+- [Email Integration Guide](EMAIL_SETUP.md)
 
-### Admin API Functions
+---
 
-The `StaffManagement` component uses `supabase.auth.admin` functions which require the **service role key** (not the anon key). For security reasons, these should not be exposed in the frontend.
-
-**Recommended Solutions:**
-
-1. **Use Supabase Edge Functions** (Recommended):
-   - Create Edge Functions for admin operations
-   - Keep service role key secure on the server
-
-2. **Manual Admin Creation**:
-   - Create admin/staff accounts manually through Supabase Dashboard
-   - Use the SQL insert method shown above
-
-3. **Backend API**:
-   - Create a separate backend API that handles admin operations
-   - Use the service role key only on the backend
-
-For now, the code includes these functions but they will fail without proper backend setup. You can create staff accounts manually or implement Edge Functions.
-
-## Routes
-
-- `/` - Public home page (browse doctors)
-- `/book/:doctorId` - Book appointment page
-- `/login` - Admin/Staff login
-- `/admin` - Admin dashboard (protected)
-- `/staff` - Staff dashboard (protected)
-- `/unauthorized` - Unauthorized access page
-
-## Database Schema
-
-See `DATABASE_SCHEMA.md` for complete database schema documentation.
-
-## Security
-
-- Row Level Security (RLS) is enabled on all tables
-- Public users can only create appointments and view doctors
-- Staff can manage doctors, time slots, and appointments
-- Admins can manage staff accounts and view system overview
-- All authentication is handled through Supabase Auth
-
-## Building for Production
-
-```bash
-npm run build
-```
-
-The built files will be in the `dist` directory.
-
-## License
-
-[Your License Here]
+Developed with ZOUBAA Mohammed ❤️ for the Healthcare Community.

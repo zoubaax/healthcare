@@ -29,6 +29,8 @@ CREATE TABLE IF NOT EXISTS doctors (
   name TEXT NOT NULL,
   specialty TEXT NOT NULL,
   description TEXT,
+  email TEXT,
+  phone TEXT,
   profile_image_url TEXT,
   created_at TIMESTAMP WITH TIME ZONE DEFAULT NOW(),
   updated_at TIMESTAMP WITH TIME ZONE DEFAULT NOW()
@@ -74,6 +76,7 @@ CREATE INDEX IF NOT EXISTS idx_staff_email ON staff(email);
 -- Doctors indexes
 CREATE INDEX IF NOT EXISTS idx_doctors_name ON doctors(name);
 CREATE INDEX IF NOT EXISTS idx_doctors_specialty ON doctors(specialty);
+CREATE INDEX IF NOT EXISTS idx_doctors_email ON doctors(email);
 
 -- Time slots indexes
 CREATE INDEX IF NOT EXISTS idx_time_slots_doctor_id ON time_slots(doctor_id);
